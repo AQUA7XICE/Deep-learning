@@ -8,7 +8,7 @@ import tensorflow as tf; print(tf.__version__)
 import numpy as np
 import os
 import time
-
+import tensorboard
 
 # comment this line out to use gpu:
 os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
@@ -113,3 +113,6 @@ metric_values = model.evaluate(test_gen)
 
 for metric_name, metric_value in zip(model.metrics_names, metric_values):
     print('%s: %.3f' % (metric_name, metric_value))
+
+
+test = 0

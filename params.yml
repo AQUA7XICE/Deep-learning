@@ -1,6 +1,6 @@
 # Experiment parameters
 
-results_path: '/home/gerda/Desktop/results'
+results_path: '/Volumes/Transcend/TU Delft/Master/CS4240 | Deep Learning/Reprocubility Project/results'
 exp_name: 'ssl test'
 
 data_split: cifar10_default

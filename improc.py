@@ -14,7 +14,15 @@ def transform_random_noise(image, sigma):
     
     return np.clip(image + np.random.normal(scale = sigma, size = image.shape), \
                    np.min(image), np.max(image))
-        
+
+def rotate(image,rotation):
+    rotated_images = []
+    for i in range(int(tf.shape(image)[0])):
+        one_rotated_image = tf.keras.preprocessing.image.random_rotation(image[i], rotation, row_axis=0, col_axis=1, channel_axis=2, fill_mode='nearest',cval=0.0, interpolation_order=1)
+        rotated_images.append(one_rotated_image)
+    return rotated_images
+    
+
 
 #%% Functions for loading and preprocessing images and segmentations
 

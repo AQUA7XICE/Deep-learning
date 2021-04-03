@@ -195,9 +195,6 @@ class SemiSupervisedConsistencyModel(tf.keras.Model):
         # separate differently transformed images
         pred1, pred2 = pred[:n, ...], pred[n:, ...]
         
-        if self.p.transform_output:
-            # transform the first half of the predictions to align it with the second half:
-            pred1 = transform_output(pred1)
         
         # separate labeled images from the rest
         yl = tf.concat((y[:n_labeled, ...], y[n:(n+n_labeled), ...]), axis = 0)
@@ -206,10 +203,17 @@ class SemiSupervisedConsistencyModel(tf.keras.Model):
         # supervised loss
         loss_sup = tf.cond(tf.math.equal(tf.size(yl), 0),
                            lambda: 0.0,
-                           lambda: self.loss(yl, predl))     
+                           lambda: self.loss(yl, predl))  #l vs 1 ...    
 
-        # unsupervised loss made symmetric (e.g. KL divergence is not symmetric)
-        loss_usup = (self.loss(pred1, pred2) + self.loss(pred2, pred1)) / 2
+        if self.p.transform_output:
+            # transform the first half of the predictions to align it with the second half:
+            # (for unsupervised loss only!)
+            t_pred1 = transform_output(pred1)
+            # unsupervised loss made symmetric (e.g. KL divergence is not symmetric)
+            loss_usup = (self.loss(t_pred1, pred2) + self.loss(pred2, t_pred1)) / 2
+        else:
+            # unsupervised loss made symmetric (e.g. KL divergence is not symmetric)
+            loss_usup = (self.loss(pred1, pred2) + self.loss(pred2, pred1)) / 2
         
         # total loss: supervised + weight * unsupervised consistency
         loss_value = loss_sup + self.p.alpha * loss_usup

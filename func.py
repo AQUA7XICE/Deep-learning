@@ -44,3 +44,13 @@ def get_batch_transform_displacement_map(displacement, interpolation_order = 3):
     
     return lambda x: tf.map_fn(fn, elems = (x, displacement))[0]
 
+def get_batch_transform_displacement_rotation_map(displacement, interpolation_order = 3):
+    """
+    Apply a displacement map using elasticdeform library.
+
+    """
+    
+    fn = lambda x: (etf.deform_grid(x[0], x[1], order = interpolation_order,rotate=np.random.uniform(low=-45, high=45, size=(1)), axis = (1, 2)), x[1])
+
+    
+    return lambda x: tf.map_fn(fn, elems = (x, displacement))[0]

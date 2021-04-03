@@ -28,13 +28,21 @@ def get_random_shift_displacement_map(shape, max_shift):
         
     return displacement
 
-def rotate(image,rotation):
+def get_random_rotation_displacement_map(shape, max_shift):
+        
+    batch_size = shape[0]
+    image_size = shape[-2:]
+
     
-    rotated_images = []
-    for i in range(int(tf.shape(image)[0])):
-        one_rotated_image = tf.keras.preprocessing.image.random_rotation(image[i], rotation, row_axis=0, col_axis=1, channel_axis=2, fill_mode='nearest',cval=0.0, interpolation_order=1)
-        rotated_images.append(one_rotated_image)
-    return rotated_images
+    # generating fake 2D shift vectors:
+    shift = np.zeros((batch_size, 2))
+    
+    # computing displacement vectors:
+    displacement = np.tile(np.reshape(shift, (batch_size, 2, 1, 1)), \
+                           [1, 1] + list(image_size))
+
+    return displacement
+
 #%% Functions for loading and preprocessing images and segmentations
 
 # loads a batch of JSRT images

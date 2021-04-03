@@ -23,7 +23,7 @@ params_file = 'params.yml'
 
 p = OmegaConf.load(params_file)
 
-run_eagerly = True    # set to true to debug model training
+run_eagerly = False    # set to true to debug model training
 
 # %% Data split parameters
 

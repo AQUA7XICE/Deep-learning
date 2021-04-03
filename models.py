@@ -171,8 +171,23 @@ class SemiSupervisedConsistencyModel(tf.keras.Model):
                 (*transform_parameters, **self.p.transform.params_apply)
                 
         t_x = transform(x)                  # transform input images
+        #xnt = x                            # used for example batch visualization
         x = tf.concat((x, t_x), axis = 0)   # form a batch to feed to the network
 
+        # used for example batch visualization
+        #xt = tf.transpose(t_x, [0, 2, 3, 1])   
+        #xt = xt.numpy()*255                    
+        #xt = xt.astype(np.uint8)
+        #xt = np.concatenate(xt[0:10,:,:,:], axis = 1)
+        #Image.fromarray(xt).save('/Volumes/Transcend/TU Delft/Master/CS4240 | Deep Learning/Reprocubility Project/cifar_test_shift.png') 
+        
+        #xnt = tf.transpose(xnt, [0, 2, 3, 1])
+        #xnt = xnt.numpy()*255
+        #xnt = xnt.astype(np.uint8)
+        #xnt = np.concatenate(xnt[0:10,:,:,:], axis = 1)
+        #xntt = np.concatenate((xnt,xt), axis = 0)
+        #Image.fromarray(xntt).save('/Volumes/Transcend/TU Delft/Master/CS4240 | Deep Learning/Reprocubility Project/cifar_test_noshift.png') 
+        
         # if network outputs and labels also need to be transformed (as in the segmentation case):
         if self.p.transform_output:        
             transform_output = getattr(func, 'get_batch_transform_' +  self.p.transform_output.apply_func) \

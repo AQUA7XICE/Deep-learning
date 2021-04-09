@@ -19,7 +19,7 @@ tf.keras.backend.set_image_data_format("channels_first")
 
 # %% Load and specify parameters
 
-params_file = 'params.yml'
+params_file = 'params_rotate.yml'
 
 p = OmegaConf.load(params_file)
 

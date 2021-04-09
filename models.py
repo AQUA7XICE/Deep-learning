@@ -6,7 +6,7 @@ from collections.abc import Iterable
 from omegaconf import OmegaConf
 
 import tensorflow as tf
-
+import numpy as np
 from tensorflow.keras.layers import Conv2D, Dense, Flatten, MaxPooling2D, \
     GlobalAveragePooling2D, BatchNormalization, Dropout
     

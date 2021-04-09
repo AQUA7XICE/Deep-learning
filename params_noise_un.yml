@@ -5,7 +5,7 @@ debug: False
 results_path: '/home/gerda/Desktop/results'
 exp_name: 'ssl test'
 
-data_split: cifar10_default
+data_split: cifar10_ssl_default
 
 num_classes: 10
 
@@ -34,11 +34,11 @@ arch:
 optimizer:
     name: Adam
     params:
-        learning_rate: 0.001
+        learning_rate: 0.00001
 
 # loss function
 loss: kl_divergence
-alpha: 0
+alpha: 1
 
 # training
 batch_size: 128

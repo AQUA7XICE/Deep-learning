@@ -1,6 +1,6 @@
 # Experiment parameters
 
-debug: True
+debug: False
 
 results_path: 'C:\Users\malfl\Desktop\MSc Control and Simulation\THIRD QUARTER\Deep Learning\Resultaten'
 exp_name: 'ssl test'

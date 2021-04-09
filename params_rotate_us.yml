@@ -2,15 +2,14 @@
 
 debug: False
 
-results_path: '/Volumes/Transcend/TU Delft/Master/CS4240 | Deep Learning/Reprocubility Project'
+results_path: 'C:\Users\malfl\Desktop\MSc Control and Simulation\THIRD QUARTER\Deep Learning\Resultaten'
 exp_name: 'ssl test'
 
-data_split: cifar10_default
+data_split: cifar10_ssl_default
 
 num_classes: 10
 
 # transform parameters
-
 transform:
     gen_func: random_rotation_displacement_map
     params_gen:
@@ -46,7 +45,7 @@ optimizer:
 
 # loss function
 loss: kl_divergence
-alpha: 0
+alpha: 1
 
 # training
 batch_size: 128

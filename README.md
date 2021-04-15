@@ -6,4 +6,12 @@ is implemented and tested on the CIFAR-10 benchmark dataset.
 Python notebook for running the entire simplified method:
 DL_RP21_SSCL.ipynb
 
+Code files that are based on or borrowed from https://github.com/Gerda92/pyoneer:
+datagen.py
+func.py
+improc.py
+jsrt_visualize.py
+models.py
+train.py
+
 Blog post PDF: BLOG_POST.pdf

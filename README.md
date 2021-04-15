@@ -5,3 +5,5 @@ is implemented and tested on the CIFAR-10 benchmark dataset.
 
 Python notebook for running the entire simplified method:
 DL_RP21_SSCL.ipynb
+
+Blog post PDF: BLOG_POST.pdf
